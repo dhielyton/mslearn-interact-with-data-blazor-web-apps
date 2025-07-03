@@ -2,10 +2,11 @@
 {
     public class PizzaTopping
     {
-        public Topping Topping { get; set; }
+        public virtual int Id { get; set; }
+        public virtual Topping Topping { get; set; }
 
-        public int ToppingId { get; set; }
+        public virtual int ToppingId { get; set; }
         
-        public int PizzaId { get; set; }
+        public virtual int PizzaId { get; set; }
     }
 }

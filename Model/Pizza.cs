@@ -24,17 +24,17 @@ namespace BlazingPizza
 
         public virtual List<PizzaTopping> Toppings { get; set; }
 
-        public decimal GetBasePrice()
+        public virtual decimal GetBasePrice()
         {
             return ((decimal)Size / (decimal)DefaultSize) * Special.BasePrice;
         }
 
-        public decimal GetTotalPrice()
+        public virtual decimal GetTotalPrice()
         {
             return GetBasePrice();
         }
 
-        public string GetFormattedTotalPrice()
+        public virtual string GetFormattedTotalPrice()
         {
             return GetTotalPrice().ToString("0.00");
         }

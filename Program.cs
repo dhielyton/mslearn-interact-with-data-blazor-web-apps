@@ -18,7 +18,8 @@ builder.Services.AddScoped(factory =>
 
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-
+builder.Services.AddHttpClient();
+builder.Services.AddMvc();
 
 
 var app = builder.Build();
@@ -32,7 +33,6 @@ if (!app.Environment.IsDevelopment())
 
 app.UseStaticFiles();
 app.UseRouting();
-
 app.MapRazorPages();
 app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");

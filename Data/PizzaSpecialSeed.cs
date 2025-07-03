@@ -10,7 +10,7 @@ namespace BlazingPizza.Data
         public static async Task SeedAsync(ISession session)
         {
             // Check if data already exists
-            var count = session.Query<Pizza>().ToList().Count();
+            var count = session.Query<PizzaSpecial>().ToList().Count();
             if (count > 0)
                 return;
 

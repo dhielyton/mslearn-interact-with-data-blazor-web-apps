@@ -1,11 +1,13 @@
-@page "/"
 @inject HttpClient HttpClient
+@inject NavigationManager NavigationManager
+@page "/"
+
 @code {
     List<PizzaSpecial> specials = new List<PizzaSpecial>();
     protected override async Task OnInitializedAsync()
     {
         
-        specials = await HttpClient.GetFromJsonAsync<List<PizzaSpecial>>("https://localhost:5001/api/pizzas/specials", CancellationToken.None); 
+        specials = await HttpClient.GetFromJsonAsync<List<PizzaSpecial>>(NavigationManager.BaseUri+"/special", CancellationToken.None); 
     }
 }
 

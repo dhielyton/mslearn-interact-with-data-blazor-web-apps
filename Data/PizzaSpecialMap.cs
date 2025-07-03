@@ -7,7 +7,7 @@ namespace BlazingPizza.Data
         public PizzaSpecialMap()
         {
 
-            Table("Pizzas"); // Table name in the database
+            Table("PizzaSpecial"); // Table name in the database
 
             Id(x => x.Id).GeneratedBy.Identity();
             Map(x => x.Name).Not.Nullable();

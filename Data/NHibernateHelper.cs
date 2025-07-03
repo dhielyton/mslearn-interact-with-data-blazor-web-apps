@@ -22,10 +22,19 @@ namespace BlazingPizza.Data
                        .ShowSql()
                    )
                    .Mappings(m =>
-                       m.FluentMappings.Add<PizzaSpecialMap>())
+                       {
+                           m.FluentMappings.Add<PizzaSpecialMap>();
+                           m.FluentMappings.Add<PizzaMap>();
+                           m.FluentMappings.Add<ToppingMap>();
+                           m.FluentMappings.Add<PizzaToppingMap>();
+
+
+                       }
+
+                   )
                    .ExposeConfiguration(cfg =>
                    {
-                       
+
                        new NHibernate.Tool.hbm2ddl.SchemaUpdate(cfg).Execute(false, true);
                    })
                    .BuildSessionFactory();
