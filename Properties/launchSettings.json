@@ -24,5 +24,9 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     }
+  },
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=DESKTOP-V7712Q7\\SQLEXPRESS;Database=pizzaria;User Id=admin;Password=@admin;TrustServerCertificate=True;"
   }
+
 }

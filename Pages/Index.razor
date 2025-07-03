@@ -1,4 +1,29 @@
 @page "/"
+@inject HttpClient HttpClient
+@code {
+    List<PizzaSpecial> specials = new List<PizzaSpecial>();
+    protected override async Task OnInitializedAsync()
+    {
+        
+        specials = await HttpClient.GetFromJsonAsync<List<PizzaSpecial>>("https://localhost:5001/api/pizzas/specials", CancellationToken.None); 
+    }
+}
 
-<h1>Blazing Pizzas</h1>
-		
+<div class="main">
+    <h1>Blazing Pizzas</h1>
+    <ul class="pizza-cards">
+        @if (specials.Any())
+        {
+            foreach(var special in specials)
+            {
+                <li style="background-image: url('@special.ImageUrl')">
+                    <div class="pizza-info">
+                        <span class="title">@special.Name</span>
+                        @special.Description
+                        <span class="price">@special.GetFormattedBasePrice()</span>
+                    </div>
+                </li>
+            }
+        }
+    </ul>
+</div>

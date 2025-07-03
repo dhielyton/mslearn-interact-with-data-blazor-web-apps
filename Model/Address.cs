@@ -3,18 +3,18 @@ namespace BlazingPizza
 {
     public class Address
     {
-        public int Id { get; set; }
+        public virtual int Id { get; set; }
 
-        public string Name { get; set; }
+        public virtual string Name { get; set; }
 
-        public string Line1 { get; set; }
+        public virtual string Line1 { get; set; }
 
-        public string Line2 { get; set; }
+        public virtual string Line2 { get; set; }
 
-        public string City { get; set; }
+        public virtual string City { get; set; }
 
-        public string Region { get; set; }
+        public virtual string Region { get; set; }
 
-        public string PostalCode { get; set; }
+        public virtual string PostalCode { get; set; }
     }
 }

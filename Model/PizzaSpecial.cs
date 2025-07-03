@@ -5,16 +5,16 @@
     /// </summary>
     public class PizzaSpecial
     {
-        public int Id { get; set; }
+        public virtual int Id { get; set; }
 
-        public string Name { get; set; }
+        public virtual string Name { get; set; }
 
-        public decimal BasePrice { get; set; }
+        public virtual decimal BasePrice { get; set; }
 
-        public string Description { get; set; }
+        public virtual string Description { get; set; }
 
-        public string ImageUrl { get; set; }
+        public virtual string ImageUrl { get; set; }
 
-        public string GetFormattedBasePrice() => BasePrice.ToString("0.00");
+        public virtual string GetFormattedBasePrice() => BasePrice.ToString("0.00");
     }
 }

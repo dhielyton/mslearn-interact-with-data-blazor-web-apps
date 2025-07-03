@@ -12,17 +12,17 @@ namespace BlazingPizza
         public const int MinimumSize = 9;
         public const int MaximumSize = 17;
 
-        public int Id { get; set; }
+        public virtual int Id { get; set; }
 
-        public int OrderId { get; set; }
+        public virtual int OrderId { get; set; }
 
-        public PizzaSpecial Special { get; set; }
+        public virtual PizzaSpecial Special { get; set; }
 
-        public int SpecialId { get; set; }
+        public virtual int SpecialId { get; set; }
 
-        public int Size { get; set; }
+        public virtual int Size { get; set; }
 
-        public List<PizzaTopping> Toppings { get; set; }
+        public virtual List<PizzaTopping> Toppings { get; set; }
 
         public decimal GetBasePrice()
         {

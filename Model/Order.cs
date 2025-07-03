@@ -6,18 +6,18 @@ namespace BlazingPizza
 {
     public class Order
     {
-        public int OrderId { get; set; }
+        public virtual int OrderId { get; set; }
 
-        public string UserId { get; set; }
+        public virtual string UserId { get; set; }
 
-        public DateTime CreatedTime { get; set; }
+        public virtual DateTime CreatedTime { get; set; }
 
-        public Address DeliveryAddress { get; set; } = new Address();
+        public virtual Address DeliveryAddress { get; set; } = new Address();
 
-        public List<Pizza> Pizzas { get; set; } = new List<Pizza>();
+        public virtual List<Pizza> Pizzas { get; set; } = new List<Pizza>();
 
-        public decimal GetTotalPrice() => Pizzas.Sum(p => p.GetTotalPrice());
+        public virtual decimal GetTotalPrice() => Pizzas.Sum(p => p.GetTotalPrice());
 
-        public string GetFormattedTotalPrice() => GetTotalPrice().ToString("0.00");
+        public virtual string GetFormattedTotalPrice() => GetTotalPrice().ToString("0.00");
     }
 }
