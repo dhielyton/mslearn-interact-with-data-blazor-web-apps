@@ -6,8 +6,8 @@
     List<PizzaSpecial> specials = new List<PizzaSpecial>();
     protected override async Task OnInitializedAsync()
     {
-        
-        specials = await HttpClient.GetFromJsonAsync<List<PizzaSpecial>>(NavigationManager.BaseUri+"/special", CancellationToken.None); 
+       
+        specials = await HttpClient.GetFromJsonAsync<List<PizzaSpecial>>(NavigationManager.BaseUri+"specials", CancellationToken.None); 
     }
 }
 

@@ -22,6 +22,7 @@ builder.Services.AddHttpClient();
 builder.Services.AddMvc();
 
 
+
 var app = builder.Build();
 
 
@@ -36,6 +37,7 @@ app.UseRouting();
 app.MapRazorPages();
 app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
+app.MapControllers();
 
 using (var scope = app.Services.CreateScope())
 {

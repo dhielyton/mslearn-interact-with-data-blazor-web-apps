@@ -3,20 +3,21 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BlazingPizza.Controllers
 {
-    [Route("special")]
+    [Route("specials")]
     [ApiController]
-    public class SpecialController : Controller
+    public class SpecialsController : Controller
     {
         private readonly PizzaService _pizzaService;
-        public SpecialController(PizzaService pizzaService)
+        public SpecialsController(PizzaService pizzaService)
         {
             _pizzaService = pizzaService;
         }
 
         [HttpGet]
-        public async Task<List<PizzaSpecial>> Get()
+        public async Task<ActionResult<List<PizzaSpecial>>> GetSpecials()
         {
             return await _pizzaService.GetAsync();
+            
         }
         
     }
