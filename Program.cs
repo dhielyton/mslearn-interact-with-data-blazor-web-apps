@@ -1,5 +1,6 @@
 
 using BlazingPizza.Data;
+using BlazingPizza.Services;
 using NHibernate;
 using ISession = NHibernate.ISession;
 
@@ -9,6 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSingleton(factory =>
     NHibernateHelper.CreateSessionFactory(builder.Configuration));
 builder.Services.AddScoped<PizzaService>();
+builder.Services.AddScoped<OrderState>();
 
 builder.Services.AddScoped(factory =>
 {
