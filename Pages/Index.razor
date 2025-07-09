@@ -9,13 +9,22 @@
 
 
 <div class="main">
+    <div class="top-bar">
+        <a class="logo" href="">
+            <img src="img/logo.svg" />
+        </a>
+        <a href="" class="nav-tab active">
+            <img src="img/pizza-slice.svg" />
+            <div>Get Pizza</div>
+        </a>
+    </div>
     <h1>Blazing Pizzas</h1>
     <ul class="pizza-cards">
         @if (specials.Any())
         {
             foreach (var special in specials)
             {
-                <li @onclick="@(() => OrderState.ShowConfigurePizzaDialog(special))" style="background-image: url('@special.ImageUrl')" >
+                <li @onclick="@(() => OrderState.ShowConfigurePizzaDialog(special))" style="background-image: url('@special.ImageUrl')">
                     <div class="pizza-info">
                         <span class="title">@special.Name</span>
                         @special.Description
@@ -29,9 +38,8 @@
 @if (OrderState.ShowingConfigureDialog)
 {
     <ConfigurePizzaDialog Pizza="OrderState.ConfiguringPizza"
-     OnCancel="OrderState.CancelConfigurePizzaDialog"
-     OnConfirm="OrderState.ConfirmConfigurePizzaDialog"
-    ></ConfigurePizzaDialog>
+                          OnCancel="OrderState.CancelConfigurePizzaDialog"
+                          OnConfirm="OrderState.ConfirmConfigurePizzaDialog"></ConfigurePizzaDialog>
 }
 <div class="sidebar">
     @if (order.Pizzas.Any())
@@ -67,7 +75,7 @@
 @code {
     List<PizzaSpecial> specials = new List<PizzaSpecial>();
     Order order => OrderState.Order;
-  
+
     protected override async Task OnInitializedAsync()
     {
 
