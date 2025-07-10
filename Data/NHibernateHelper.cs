@@ -27,7 +27,8 @@ namespace BlazingPizza.Data
                            m.FluentMappings.Add<PizzaMap>();
                            m.FluentMappings.Add<ToppingMap>();
                            m.FluentMappings.Add<PizzaToppingMap>();
-
+                           m.FluentMappings.Add<AddressMap>();
+                           m.FluentMappings.Add<OrderMap>();
 
                        }
 

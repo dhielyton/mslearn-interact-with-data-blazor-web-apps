@@ -9,10 +9,11 @@ namespace BlazingPizza.Data
         {
             Table("Pizza"); // Table name in the database
             Id(x => x.Id).GeneratedBy.Identity();
-            Map(x => x.OrderId).Not.Nullable();
-            References(x => x.Special).Column("SpecialId").Not.Nullable();
+            References(x => x.Special).Column(nameof(Pizza.SpecialId)).Not.Nullable();
             Map(x => x.Size).Not.Nullable();
-            HasMany(x => x.Toppings).Cascade.All().Inverse().AsBag(); // Assuming Toppings is a collection of PizzaTopping
+            HasMany(x => x.Toppings).Cascade.All(); // Assuming Toppings is a collection of PizzaTopping
+            
+            
         }
     }
 }
