@@ -6,12 +6,16 @@ namespace BlazingPizza.Data
     {
         public OrderMap()
         {
-            Table("Order"); // Table name in the database
+            Table("Orders"); // Table name in the database
             Id(x => x.OrderId).GeneratedBy.Identity();
             Map(x => x.UserId).Nullable();
             Map(x => x.CreatedTime).Not.Nullable();
             References(x => x.DeliveryAddress).Column(nameof(Order.DeliveryAddressId));
-            HasMany(x => x.Pizzas).Table("Pizza").KeyColumn("OrderId");
+
+            Map(x => x.DeliveryAddressId)
+                .Column(nameof(Order.DeliveryAddressId))
+                .ReadOnly();
+            HasMany(x => x.Pizzas).Cascade.None();
                 
         }
     }

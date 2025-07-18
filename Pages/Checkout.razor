@@ -37,7 +37,7 @@
         </div>
 
     </div>
-    <button class="checkout-button btn btn-warning" disabled=@isSubmitting>Place Order</button>
+    <button class="checkout-button btn btn-warning" disabled=@isSubmitting @onclick="PlaceOrder">Place Order</button>
 </div>
 @code {
     Order Order => OrderState.Order;

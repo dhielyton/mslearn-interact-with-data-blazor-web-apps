@@ -11,6 +11,7 @@ builder.Services.AddSingleton(factory =>
     NHibernateHelper.CreateSessionFactory(builder.Configuration));
 builder.Services.AddScoped<PizzaService>();
 builder.Services.AddScoped<OrderState>();
+builder.Services.AddScoped<OrderService>();
 
 builder.Services.AddScoped(factory =>
 {

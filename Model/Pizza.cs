@@ -14,6 +14,7 @@ namespace BlazingPizza
 
         public virtual int Id { get; set; }
 
+        public virtual Order Order { get; set; }
         public virtual int OrderId { get; set; }
 
         public virtual PizzaSpecial Special { get; set; }

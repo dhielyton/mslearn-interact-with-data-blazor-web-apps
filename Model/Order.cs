@@ -12,10 +12,10 @@ namespace BlazingPizza
 
         public virtual DateTime CreatedTime { get; set; }
 
-        public virtual Address DeliveryAddress { get; set; } = new Address();
-        public virtual int DeliveryAddressId { get; set; }
+        public virtual Address DeliveryAddress { get; set; } 
+        public virtual int? DeliveryAddressId { get; set; }
 
-        public virtual List<Pizza> Pizzas { get; set; } = new List<Pizza>();
+        public virtual IList<Pizza> Pizzas { get; set; } = new List<Pizza>();
 
         public virtual decimal GetTotalPrice() => Pizzas.Sum(p => p.GetTotalPrice());
 
