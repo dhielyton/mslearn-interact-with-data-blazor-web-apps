@@ -23,7 +23,7 @@ namespace BlazingPizza
 
         public virtual int Size { get; set; }
 
-        public virtual List<PizzaTopping> Toppings { get; set; }
+        public virtual IList<PizzaTopping> Toppings { get; set; }
 
         public virtual decimal GetBasePrice()
         {

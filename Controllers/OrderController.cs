@@ -27,14 +27,14 @@ namespace BlazingPizza.Controllers
             return order.OrderId;
         }
         [HttpGet]
-        public ActionResult<List<Order>> GetOrders()
+        public ActionResult<List<OrderWithStatus>> GetOrders()
         {
             var orders = _orderService.GetOrders();
             if (orders == null || !orders.Any())
             {
                 return NotFound("No orders found.");
             }
-            return orders;
+            return orders.Select(x => OrderWithStatus.FromOrder(x)).ToList();
         }
     }
 }

@@ -15,7 +15,7 @@ namespace BlazingPizza.Data
             Map(x => x.DeliveryAddressId)
                 .Column(nameof(Order.DeliveryAddressId))
                 .ReadOnly();
-            HasMany(x => x.Pizzas).Cascade.None();
+            HasMany(x => x.Pizzas).Not.LazyLoad();
                 
         }
     }

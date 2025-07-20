@@ -1,4 +1,6 @@
 ﻿
+using NHibernate.Linq;
+
 namespace BlazingPizza.Data
 {
     public class OrderService
@@ -36,7 +38,11 @@ namespace BlazingPizza.Data
 
         public List<Order> GetOrders()
         {
-            return _session.Query<Order>().ToList();
+            return _session.Query<Order>()
+           .FetchMany(o => o.Pizzas)
+          
+           .ToList();
+
         }
     }
 }
