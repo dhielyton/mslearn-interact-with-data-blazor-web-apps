@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 
 namespace BlazingPizza
 {
@@ -14,6 +15,7 @@ namespace BlazingPizza
 
         public virtual int Id { get; set; }
 
+        [JsonIgnore]
         public virtual Order Order { get; set; }
         public virtual int OrderId { get; set; }
 

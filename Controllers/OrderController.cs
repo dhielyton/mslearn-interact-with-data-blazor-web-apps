@@ -26,15 +26,25 @@ namespace BlazingPizza.Controllers
             await _orderService.AddAsync(order);
             return order.OrderId;
         }
+
+
         [HttpGet]
         public ActionResult<List<OrderWithStatus>> GetOrders()
         {
-            var orders = _orderService.GetOrders();
-            if (orders == null || !orders.Any())
+            try
             {
-                return NotFound("No orders found.");
+                var orders = _orderService.GetOrders();
+                if (orders == null || !orders.Any())
+                {
+                    return NotFound("No orders found.");
+                }
+                return orders.Select(x => OrderWithStatus.FromOrder(x)).ToList();
             }
-            return orders.Select(x => OrderWithStatus.FromOrder(x)).ToList();
+            catch (Exception ex)
+            {
+
+                throw;
+            }
         }
     }
 }

@@ -63,7 +63,7 @@
 
     protected override async Task OnParametersSetAsync()
     {
-       
+        
         orderWithStatus = await HttpClient.GetFromJsonAsync<List<OrderWithStatus>>($"{NavigationManager.BaseUri}orders");
     }
 }
