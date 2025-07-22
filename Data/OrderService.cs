@@ -44,5 +44,12 @@ namespace BlazingPizza.Data
            .ToList();
 
         }
+
+        public Order GetOrder(int id)
+        {
+            return _session.Query<Order>()
+                .FetchMany(o => o.Pizzas)
+                .FirstOrDefault(o => o.OrderId == id);
+        }
     }
 }
