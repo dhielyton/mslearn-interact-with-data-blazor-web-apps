@@ -12,7 +12,7 @@ namespace BlazingPizza
 
         public virtual DateTime CreatedTime { get; set; }
 
-        public virtual Address DeliveryAddress { get; set; } 
+        public virtual Address DeliveryAddress { get; set; } = new Address();
         public virtual int? DeliveryAddressId { get; set; }
 
         public virtual IList<Pizza> Pizzas { get; set; } = new List<Pizza>();
