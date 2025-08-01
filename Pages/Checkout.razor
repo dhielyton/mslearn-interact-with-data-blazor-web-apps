@@ -3,9 +3,9 @@
 @inject HttpClient HttpClient
 @inject OrderState OrderState
 @inject NavigationManager NavigationManager
-
+@implements IDisposable
 <div class="main">
-    <EditForm Model="Order.DeliveryAddress" OnValidSubmit="PlaceOrder" OnInvalidSubmit="Showerror">
+    <EditForm EditContext="editContext"OnValidSubmit="PlaceOrder">
 
 
         <div class="checkout-cols">
@@ -23,20 +23,30 @@
                 <AddressEditor Address="Order.DeliveryAddress"></AddressEditor>
             </div>
         </div>
-        <button class="checkout-button btn btn-warning" disabled=@isSubmitting>Place Order</button>
+        <button class="checkout-button btn btn-warning" type="submit" disabled=@isError>Place Order</button>
         <ValidationSummary/>
         <DataAnnotationsValidator/>
     </EditForm>
 </div>
 @code {
+    private EditContext editContext;
     Order Order => OrderState.Order;
-    bool isSubmitting;
     bool isError = false;
+    protected override void OnInitialized()
+    {
+        editContext = new(Order.DeliveryAddress);
+        editContext.OnFieldChanged += HandleFiledChanged;
+    }
 
+    private void HandleFiledChanged(object sneder, FieldChangedEventArgs e)
+    {
+        isError = !editContext.Validate();
+        StateHasChanged();
+    }
     async Task PlaceOrder()
     {
         isError = false;
-        isSubmitting = true;
+        
         var response = await HttpClient.PostAsJsonAsync(NavigationManager.BaseUri + "orders", OrderState.Order);
         var neworderId = await response.Content.ReadFromJsonAsync<int>();
         OrderState.ResetOrder();
@@ -45,7 +55,7 @@
 
     private async Task CheckSubmission(EditContext editContext)
     {
-        isSubmitting = true;
+        
         var model = editContext.Model as Address;
         isError = string.IsNullOrWhiteSpace(model?.Name) ||
                    string.IsNullOrWhiteSpace(model?.Line1) ||
@@ -54,11 +64,16 @@
                    string.IsNullOrWhiteSpace(model?.PostalCode);
         if (!isError)
             await PlaceOrder();
-        isSubmitting = false;
+        
     }
     protected void Showerror()
     {
         isError = true;
+    }
+
+    public void Dispose()
+    {
+        editContext.OnFieldChanged -= HandleFiledChanged;
     }
 
 }
