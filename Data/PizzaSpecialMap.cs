@@ -14,7 +14,8 @@ namespace BlazingPizza.Data
             Map(x => x.Description).Nullable();
             Map(x => x.BasePrice).Not.Nullable();
             Map(x => x.ImageUrl).Nullable();
-           
+            Map(x => x.FixedSize).Nullable(); 
+
         }
     }
 }

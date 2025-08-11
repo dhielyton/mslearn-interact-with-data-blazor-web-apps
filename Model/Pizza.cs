@@ -27,10 +27,12 @@ namespace BlazingPizza
 
         public virtual IList<PizzaTopping> Toppings { get; set; }
 
-        public virtual decimal GetBasePrice()
-        {
-            return ((decimal)Size / (decimal)DefaultSize) * Special.BasePrice;
-        }
+        public virtual decimal GetBasePrice() =>
+            Special is { FixedSize: not null }
+            ? Special.BasePrice
+            : (decimal)Size / DefaultSize * Special?.BasePrice ?? 1;
+
+
 
         public virtual decimal GetTotalPrice()
         {

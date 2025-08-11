@@ -14,6 +14,7 @@
         public virtual string Description { get; set; }
 
         public virtual string ImageUrl { get; set; }
+        public  virtual int? FixedSize { get; set; }
 
         public virtual string GetFormattedBasePrice() => BasePrice.ToString("0.00");
     }
